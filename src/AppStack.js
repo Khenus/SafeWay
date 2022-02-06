@@ -21,22 +21,22 @@ function AppStack() {
         <MainStack.Screen
           name='HomeScreen'
           component={HomeScreen}
-          options={settings.noHeader}
+          options={settings.noTitle}
         />
         <MainStack.Screen
           name='ContactScreen'
           component={ContactScreen}
-          options={settings.noHeader}
+          options={settings.noTitle}
         />
         <MainStack.Screen
           name='MapScreen'
           component={MapScreen}
-          options={settings.noHeader}
+          options={settings.noTitle}
         />
         <MainStack.Screen
           name='CallingScreen'
           component={AuthoritiesScreen}
-          // options={settings.noHeader}
+          options={settings.noTitle}
         />
       </MainStack.Navigator>
     </NavigationContainer>

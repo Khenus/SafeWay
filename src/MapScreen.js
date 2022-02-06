@@ -40,7 +40,9 @@ export default function MapScreen() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Sharing location</Text>
-        <Text>There are {numFriend} trusted persons within 1 mile of you</Text>
+        <Text>
+          Location shared with {numFriend} trusted persons within 1 mile of you
+        </Text>
       </View>
 
       <View>
