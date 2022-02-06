@@ -7,10 +7,22 @@ export default function MapScreen() {
 
   return (
     <View style={styles.container}>
-      <Text>Sharing location</Text>
-      <Text>There are {numFriend} nearby</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>Sharing location</Text>
+        <Text>There are {numFriend} trusted persons nearby</Text>
+      </View>
 
-      {/* <MapView */}
+      <View>
+        <MapView
+          initialRegion={{
+            latitude: 37.77065,
+            longitude: -122.46621,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+          style={styles.map}
+        />
+      </View>
     </View>
   );
 }
@@ -18,13 +30,27 @@ export default function MapScreen() {
 const styles = StyleSheet.create({
   // Add your own styles here
   container: {
-    flex: 1,
+    display: 'flex',
     backgroundColor: '#fff',
     alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  header: {
+    display: 'flex',
+    marginBottom: 10,
+    marginTop: 10,
+    alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
+  },
+  title: {
+    fontSize: 25,
+    fontWeight: 'bold',
   },
   map: {
-    width: Dimensions.get('window').width - 10,
-    height: Dimensions.get('window').height - 10,
+    display: 'flex',
+    flexBasis: '85%',
+    borderWidth: 1,
+    width: Dimensions.get('window').width - 30,
   },
 });

@@ -16,7 +16,7 @@ function AppStack() {
 
   return (
     <NavigationContainer>
-      <MainStack.Navigator initialRouteName='HomeScreen'>
+      <MainStack.Navigator initialRouteName='MapScreen'>
         <MainStack.Screen
           name='HomeScreen'
           component={HomeScreen}
