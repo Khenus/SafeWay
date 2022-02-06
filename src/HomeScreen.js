@@ -8,6 +8,7 @@ export default function HomeScreen({navigation}) {
     <View style={styles.container}>
       <Image style={{width: 400, height: 400}} source={safeway} />
 
+      <View style={styles.space} />
       <View style={styles.buttonPurple}>
         <Button
           title='Start Sharing Location'
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   space: {
-    height: 10,
+    height: 20,
   },
   buttonPurple: {
     backgroundColor: '#B994FF',

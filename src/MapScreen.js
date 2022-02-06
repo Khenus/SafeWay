@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import {connect} from 'react-redux';
 import {StyleSheet, View, Text, Dimensions} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
+import {mapDispatchToProps, mapStateToProps} from './Commons/Constants';
 import {CalDistance} from './Commons/Functions';
-import {Data} from './Data';
 
 const initLoca = {
   latitude: 37.77065,
@@ -13,19 +14,23 @@ const initLoca = {
 
 const friendRadius = 1;
 
-export default function MapScreen() {
+export default connect(mapStateToProps, mapDispatchToProps)(MapScreen);
+
+function MapScreen(props) {
+  const userData = props.userData;
+
   const [numFriend, setNumFriend] = useState(0);
 
   useEffect(() => {
     var newNumFriend = 0;
 
-    for (var i = 0; i < Data.length; i++) {
+    for (var i = 0; i < userData.length; i++) {
       if (
-        Data[i].isSelected &&
+        userData[i].isSelected &&
         CalDistance(
-          Data[i].location.latitude,
+          userData[i].location.latitude,
           initLoca.latitude,
-          Data[i].location.longitude,
+          userData[i].location.longitude,
           initLoca.longitude,
         ) < friendRadius
       ) {
@@ -34,7 +39,7 @@ export default function MapScreen() {
     }
 
     setNumFriend(newNumFriend);
-  }, []);
+  }, [userData]);
 
   return (
     <View style={styles.container}>
@@ -47,7 +52,7 @@ export default function MapScreen() {
 
       <View>
         <MapView initialRegion={initLoca} style={styles.map}>
-          {Data.map((user) =>
+          {userData.map((user) =>
             user.isSelected ? (
               <Marker
                 key={user.phone}

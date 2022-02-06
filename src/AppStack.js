@@ -21,7 +21,7 @@ function AppStack() {
         <MainStack.Screen
           name='HomeScreen'
           component={HomeScreen}
-          options={settings.noTitle}
+          options={settings.noHeader}
         />
         <MainStack.Screen
           name='ContactScreen'
@@ -47,10 +47,10 @@ const settings = {
   noTitle: {
     title: '',
   },
-  // noHeader: {
-  //   headerShown: false,
-  //   animationEnabled: false,
-  // },
+  noHeader: {
+    headerShown: false,
+    animationEnabled: false,
+  },
 
   //   hasHeader: {
   //     title: '',
