@@ -1,34 +1,66 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Text, Dimensions} from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
+import {CalDistance} from './Commons/Functions';
+import {Data} from './Data';
+
+const initLoca = {
+  latitude: 37.77065,
+  longitude: -122.46621,
+  latitudeDelta: 0.0922,
+  longitudeDelta: 0.0421,
+};
+
+const friendRadius = 1;
 
 export default function MapScreen() {
-  const numFriend = 3;
+  const [numFriend, setNumFriend] = useState(0);
+
+  useEffect(() => {
+    var newNumFriend = 0;
+
+    for (var i = 0; i < Data.length; i++) {
+      if (
+        Data[i].isSelected &&
+        CalDistance(
+          Data[i].location.latitude,
+          initLoca.latitude,
+          Data[i].location.longitude,
+          initLoca.longitude,
+        ) < friendRadius
+      ) {
+        newNumFriend++;
+      }
+    }
+
+    setNumFriend(newNumFriend);
+  }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Sharing location</Text>
-        <Text>There are {numFriend} trusted persons nearby</Text>
+        <Text>There are {numFriend} trusted persons within 1 mile of you</Text>
       </View>
 
       <View>
-        <MapView
-          initialRegion={{
-            latitude: 37.77065,
-            longitude: -122.46621,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-          style={styles.map}
-        />
+        <MapView initialRegion={initLoca} style={styles.map}>
+          {Data.map((user) =>
+            user.isSelected ? (
+              <Marker
+                key={user.phone}
+                coordinate={user.location}
+                image={{uri: user.image}}
+              />
+            ) : null,
+          )}
+        </MapView>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  // Add your own styles here
   container: {
     display: 'flex',
     backgroundColor: '#fff',
@@ -41,7 +73,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
   },
   title: {
     fontSize: 25,
@@ -50,7 +81,6 @@ const styles = StyleSheet.create({
   map: {
     display: 'flex',
     flexBasis: '85%',
-    borderWidth: 1,
     width: Dimensions.get('window').width - 30,
   },
 });

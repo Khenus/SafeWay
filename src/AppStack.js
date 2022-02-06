@@ -20,54 +20,57 @@ function AppStack() {
         <MainStack.Screen
           name='HomeScreen'
           component={HomeScreen}
-          // options={settings.noHeader}
+          options={settings.noHeader}
         />
         <MainStack.Screen
           name='ContactScreen'
           component={ContactScreen}
-          // options={settings.noHeader}
+          options={settings.noHeader}
         />
         <MainStack.Screen
           name='MapScreen'
           component={MapScreen}
-          // options={settings.noHeader}
+          options={settings.noHeader}
         />
       </MainStack.Navigator>
     </NavigationContainer>
   );
 }
 
-// const settings = {
-//   noHeader: {
-//     headerShown: false,
-//     animationEnabled: false,
-//   },
+const settings = {
+  noTitle: {
+    title: '',
+  },
+  // noHeader: {
+  //   headerShown: false,
+  //   animationEnabled: false,
+  // },
 
-//   hasHeader: {
-//     title: '',
-//     animationEnabled: false,
-//     headerStyle: {
-//       backgroundColor: 'white',
-//       elevation: 0,
-//       shadowOpacity: 0,
-//       borderBottomWidth: 0,
-//     },
-//   },
+  //   hasHeader: {
+  //     title: '',
+  //     animationEnabled: false,
+  //     headerStyle: {
+  //       backgroundColor: 'white',
+  //       elevation: 0,
+  //       shadowOpacity: 0,
+  //       borderBottomWidth: 0,
+  //     },
+  //   },
 
-//   noHeaderAnimated: {
-//     title: '',
-//     headerShown: false,
-//     animationEnabled: true,
-//   },
+  //   noHeaderAnimated: {
+  //     title: '',
+  //     headerShown: false,
+  //     animationEnabled: true,
+  //   },
 
-//   hasHeaderAnimated: {
-//     title: '',
-//     animationEnabled: true,
-//     headerStyle: {
-//       backgroundColor: 'white',
-//       elevation: 0,
-//       shadowOpacity: 0,
-//       borderBottomWidth: 0,
-//     },
-//   },
-// };
+  //   hasHeaderAnimated: {
+  //     title: '',
+  //     animationEnabled: true,
+  //     headerStyle: {
+  //       backgroundColor: 'white',
+  //       elevation: 0,
+  //       shadowOpacity: 0,
+  //       borderBottomWidth: 0,
+  //     },
+  //   },
+};
