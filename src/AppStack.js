@@ -8,6 +8,7 @@ import {mapDispatchToProps, mapStateToProps} from './Commons/Constants';
 import HomeScreen from './HomeScreen';
 import ContactScreen from './ContactScreen';
 import MapScreen from './MapScreen';
+import AuthoritiesScreen from './AuthoritiesScreen';
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppStack);
 
@@ -16,7 +17,7 @@ function AppStack() {
 
   return (
     <NavigationContainer>
-      <MainStack.Navigator initialRouteName='MapScreen'>
+      <MainStack.Navigator initialRouteName='HomeScreen'>
         <MainStack.Screen
           name='HomeScreen'
           component={HomeScreen}
@@ -30,6 +31,11 @@ function AppStack() {
         <MainStack.Screen
           name='MapScreen'
           component={MapScreen}
+          // options={settings.noHeader}
+        />
+        <MainStack.Screen
+          name='CallingScreen'
+          component={AuthoritiesScreen}
           // options={settings.noHeader}
         />
       </MainStack.Navigator>
