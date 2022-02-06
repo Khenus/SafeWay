@@ -1,12 +1,12 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, Dimensions} from 'react-native';
 import MapView from 'react-native-maps';
 
 export default function MapScreen() {
   const numFriend = 3;
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Sharing location</Text>
       <Text>There are {numFriend} nearby</Text>
 
@@ -22,5 +22,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  map: {
+    width: Dimensions.get('window').width - 10,
+    height: Dimensions.get('window').height - 10,
   },
 });
