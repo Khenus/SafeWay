@@ -1,10 +1,16 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
+import MapView from 'react-native-maps';
 
 export default function MapScreen() {
+  const numFriend = 3;
+
   return (
     <View>
-      <Text>This is the map screen</Text>
+      <Text>Sharing location</Text>
+      <Text>There are {numFriend} nearby</Text>
+
+      {/* <MapView */}
     </View>
   );
 }
